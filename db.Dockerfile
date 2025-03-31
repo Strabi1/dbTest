@@ -23,4 +23,9 @@ RUN service mysql start && \
     mysql -e "GRANT ALL PRIVILEGES ON food_db.* TO 'user'@'%';" && \
     mysql -e "FLUSH PRIVILEGES;"
 
+RUN mkdir -p /media/database
+COPY ./init.sql /media/database
+
+RUN service mysql start &&  mysql food_db < /media/database/init.sql
+
 WORKDIR /media/database

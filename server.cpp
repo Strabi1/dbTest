@@ -1,6 +1,7 @@
 #include <cpprest/http_listener.h>
 #include <cpprest/json.h>
-#include <mysql/mysql.h>
+// #include <mysql/mysql.h>
+#include <mysql.h>
 #include <iostream>
 #include <string>
 
@@ -13,7 +14,7 @@ using namespace web;
 using namespace web::http;
 using namespace web::http::experimental::listener;
 
-crow::json::value queryDatabase() {
+json::value queryDatabase() {
     MYSQL *conn;
     MYSQL_RES *res;
     MYSQL_ROW row;
