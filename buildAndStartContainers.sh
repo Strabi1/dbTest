@@ -1,6 +1,6 @@
 #!/bin/sh
 
-version=1.1
+version=1.2
 
 echo 
 echo ===============================================
@@ -22,4 +22,4 @@ echo ===============================================
 echo Start Database container
 echo ===============================================
 echo 
-docker run --name=db_container -it -v .:/media/database db_docker:${version}
+docker run --name=db_container -it -v .:/media/database -p 8080:8080 db_docker:${version}

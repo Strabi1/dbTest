@@ -6,7 +6,7 @@
 #include <string>
 
 #define DB_HOST "localhost"
-#define DB_USER "root"
+#define DB_USER "user"
 #define DB_PASS "password"
 #define DB_NAME "food_db"
 
@@ -18,6 +18,8 @@ json::value queryDatabase() {
     MYSQL *conn;
     MYSQL_RES *res;
     MYSQL_ROW row;
+
+	std::cout << "Connecting to database..." << std::endl;
 
     // Kapcsolódás az adatbázishoz
     conn = mysql_init(NULL);
@@ -65,7 +67,7 @@ void handle_get(http_request request) {
 
 int main() {
     // HTTP listener beállítása
-    http_listener listener("http://localhost:8080/api/foods");
+    http_listener listener("http://0.0.0.0:8080/api/foods");
     listener.support(methods::GET, handle_get);
 
     // Szerver indítása

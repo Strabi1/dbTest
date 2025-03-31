@@ -13,7 +13,8 @@ RUN apt update && \
         python3 python3-pip \
         # libboost-all-dev \
         libcpprest-dev \
-        libssl-dev 
+        libssl-dev \
+        wget
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 
 # MariaDB indítása és inicializálása
