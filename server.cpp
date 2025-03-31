@@ -45,7 +45,7 @@ json::value queryDatabase() {
     int index = 0;
     while ((row = mysql_fetch_row(res))) {
         result[index]["id"] = std::stoi(row[0]);
-        result[index]["name"] = row[1] ? row[1] : "";
+        // result[index]["name"] = row[1] ? row[1] : "";
         result[index]["calories"] = row[2] ? std::stoi(row[2]) : 0;
         result[index]["protein"] = row[3] ? std::stof(row[3]) : 0.0f;
         index++;
