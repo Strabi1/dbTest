@@ -1,4 +1,11 @@
 
 all:
+# ================================================
+# Server - dockerben kell fordítani
+# ================================================
 	g++ server.cpp -I/usr/include/mariadb -lmariadb -lpthread -lcpprest -lssl -lcrypto -o server
-#	g++ server2.cpp -I/usr/include/mariadb -lmariadb -lpthread -lcpprest -lssl -lcrypto -o server2
+
+# ================================================
+# Test - bárhol lehet fordítani
+# ================================================
+	g++ measure.cpp -I/usr/include/mariadb -lcurl -o measure

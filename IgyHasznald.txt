@@ -1,0 +1,13 @@
+
+Fordítás:
+make
+
+DB inditása:
+service mysql start &&  mysql food_db < /media/database/init.sql
+
+Szerver inditása:
+./server
+
+Adat lekérés:
+http://127.0.0.1:8080/api/foods
+
