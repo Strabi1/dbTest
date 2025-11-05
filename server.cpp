@@ -43,20 +43,21 @@ json::value queryDatabase() {
         return json::value::string("Failed to retrieve result");
     }
 
-    json::value result;
-    int index = 0;
+    std::vector<json::value> items;
     while ((row = mysql_fetch_row(res))) {
-        result[index]["id"] = std::stoi(row[0]);
-        // result[index]["name"] = row[1] ? row[1] : "";
-        result[index]["calories"] = row[2] ? std::stoi(row[2]) : 0;
-        result[index]["protein"] = row[3] ? std::stof(row[3]) : 0.0f;
-        index++;
+        json::value obj = json::value::object();
+        obj[U("id")] = json::value::number(row[0] ? std::atoi(row[0]) : 0);
+        obj[U("name")] = json::value::string(row[1] ? utility::conversions::to_string_t(row[1]) : U(""));
+        obj[U("calories")] = json::value::number(row[2] ? std::atoi(row[2]) : 0);
+        obj[U("protein")] = json::value::number(row[3] ? std::atof(row[3]) : 0.0);
+
+        items.push_back(obj);
     }
 
     mysql_free_result(res);
     mysql_close(conn);
 
-    return result;
+    return json::value::array(items);
 }
 
 // GET request handler
