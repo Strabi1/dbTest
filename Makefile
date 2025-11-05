@@ -12,3 +12,8 @@ meas:
 # Test - bárhol lehet fordítani
 # ================================================
 	g++ measure.cpp -I/usr/include/mariadb -lcurl -o measure
+
+clean:
+	rm -rf server measure
+
+.PHONY: server meas clean

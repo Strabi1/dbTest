@@ -22,4 +22,4 @@ echo ===============================================
 echo Start Database container
 echo ===============================================
 echo 
-docker run --name=db_container -it -v .:/media/database -p 8080:8080 db_docker:${version}
+docker run --name=db_container -it -v .:/media/database -p 3306:3306 -p 8080:8080 db_docker:${version}

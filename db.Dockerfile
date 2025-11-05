@@ -17,6 +17,9 @@ RUN apt update && \
         wget
 RUN apt clean && rm -rf /var/lib/apt/lists/*
 
+RUN echo "[mysqld]" >> /etc/mysql/my.cnf && \
+    echo "bind-address = 0.0.0.0" >> /etc/mysql/my.cnf
+
 # MariaDB indítása és inicializálása
 RUN service mysql start && \
     mysql -e "CREATE DATABASE food_db;" && \
@@ -30,3 +33,7 @@ COPY ./init.sql /media/database
 RUN service mysql start &&  mysql food_db < /media/database/init.sql
 
 WORKDIR /media/database
+
+COPY startScript.sh /startScript.sh
+RUN chmod +x /startScript.sh
+CMD ["/startScript.sh"]
